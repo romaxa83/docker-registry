@@ -1,0 +1,3 @@
+certbot_email: romaxa83@ukr.net
+certbot_hosts:
+    - registry.cubic-dev.tech

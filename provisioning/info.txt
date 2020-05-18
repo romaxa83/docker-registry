@@ -1,0 +1,14 @@
+для развертывание на сервере
+
+- создаем виртуалку и поддомен (reqistry.my_domain)
+- копируем host.yml и прописываем ip поддомена
+- make server - установит на сервере docker,certbot, настроит сертификаты
+- make authorize - прокидываем публичный клю пользователю deploy
+- docker run --rm registry:2 htpasswd -Bbn user password > htpasswd
+    генерим пароль для аутентификации к регистру (вместо user и password соответствено вводим данные)
+- переходим в корень проект и выполняем команду  -
+    HOST=deploy@ip_host PORT=22 HTPASSWD_FILE=htpasswd make deploy
+    где
+        HOST - ssh подключение к серверу
+        PORT - порт подключения
+        HTPASSWD_FILE - путь к файлу с генерированым паролем
